@@ -1,0 +1,25 @@
+type Rule {
+  id: ID!
+  title: String!
+  thumbnail: String
+  priority: Int!
+  status: Boolean!
+}
+
+type Query {
+  rules: [Rule!]! @all
+  rule(id: ID!): Rule @find
+}
+
+type Mutation {
+  createRule(title: String!, thumbnail: String, priority: Int!, status: Boolean!): Rule @create
+
+  
+  updateRule(id: ID!, title: String, thumbnail: String, priority: Int, status: Boolean): Rule @update
+
+
+  deleteRule(id: ID! @eq): Rule  @delete(model: "App\\Models\\Rule")
+
+  
+  
+}
