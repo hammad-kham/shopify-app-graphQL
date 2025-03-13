@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RuleController;
 use App\Http\Controllers\ShopifyProductController;
@@ -17,7 +18,13 @@ use App\Http\Controllers\ShopifyProductController;
 
 
 Route::middleware(['verify.shopify'])->group(function () {
-    // Route::get('/', [RuleController::class, 'index'])->name('home');
+
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+
+    
+    // Route::get('/', [RuleController::class, 'index'])->name('rulesListing');
     // Route::get('/rule/create', [RuleController::class, 'create'])->name('create.rule');
 
     // Route::post('/rule/store', [RuleController::class, 'store']);
@@ -31,13 +38,20 @@ Route::middleware(['verify.shopify'])->group(function () {
 
 
     //shopify api routes
-    Route::get('/', [ShopifyProductController::class, 'getProducts'])->name('home');
+    Route::get('/products', [ShopifyProductController::class, 'getProducts'])->name('productListing');
+    
 
     Route::get('/create', [ShopifyProductController::class, 'create'])->name('create.product');
     Route::post('/create', [ShopifyProductController::class, 'store'])->name('product.store');
 
     Route::post('/delete-product', [ShopifyProductController::class, 'deleteProduct']);
 
+
+    Route::get('/discounts',[DiscountController::class,'listDiscounts'])->name('listDiscounts');
+
+    Route::get('/create-discount',[DiscountController::class,'create'])->name('create.discount');
+
+    Route::post('discount/create',[DiscountController::class,'store']);
 
 });
 

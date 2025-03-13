@@ -14,7 +14,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    {{-- <th style="padding: 10px 15px; text-align: left;">ID</th> --}}
+                                    <th style="padding: 10px 15px; text-align: left;">ID</th>
                                     <th style="padding: 6px 30px; text-align: left;">Title</th>
                                     <th style="padding: 10px 15px; text-align: left;">Inventory</th>
                                     <th style="padding: 10px 15px; text-align: left;">Image</th>
@@ -25,7 +25,7 @@
                             <tbody>
                                 @foreach ($shopifyProducts as $product)
                                     <tr>
-                                        {{-- <td style="padding: 12px 15px;">{{ $product['node']['id'] }}</td> --}}
+                                        <td style="padding: 12px 15px;">{{ $product['node']['id'] }}</td>
                                         <td style="padding: 12px 15px;">{{ $product['node']['title'] }}</td>
                                         <td style="padding: 12px 15px;">{{ $product['node']['totalInventory'] }}</td>
                                         <td style="padding: 12px 15px;">
